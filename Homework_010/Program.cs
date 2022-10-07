@@ -6,7 +6,7 @@
 918 -> 1
 */
 
-int n = new Random().Next(100, 1000);  //берем случайное число трехзначное
-int a = n / 10 % 10;                   //делим 3-зн число на 10 и делим на  остаток от деления на 10 и получаем 2 число
-Console.WriteLine(n);                  //выводим результат : само 3-зн число
-Console.Write( a );                    //вторая цифра числа
+int ThreeDigitNumber = new Random().Next(100, 1000);  //берем случайное число трехзначное
+int secondDigit = ThreeDigitNumber / 10 % 10;                   //делим 3-зн число на 10 и делим на  остаток от деления на 10 и получаем 2 число
+Console.WriteLine(ThreeDigitNumber);                  //выводим результат : само 3-зн число
+Console.Write( secondDigit );                    //вторая цифра числа

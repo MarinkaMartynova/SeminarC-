@@ -7,11 +7,15 @@
 Console.Write("Введите число: ");
 int num = Convert.ToInt32(Console.ReadLine());
 
-if (num > 99)
-{
-    Console.WriteLine(num % 10);
-}
-if (num < 99)
+if (num <= 99)
 {
     Console.WriteLine("В числе нет третьей цифры");
+}
+
+else 
+{
+    while(num > 999) {
+        num = num / 10;
+        }
+    Console.WriteLine(num % 10);
 }

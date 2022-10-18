@@ -3,39 +3,46 @@
 
 [3 7 22 2 78] -> 76
 
-
 */
 
-void FillArray(int[] array, int from, int to)
-{
-      for (int i = 0; i < array.Length; i++)
-    {
-        array[i] = new Random().Next(from, to+1); 
-    }
-}
-
-void PrintArray(int[] array)
-{
-       for (int i = 0; i < array.Length - 1; i++)
-    {
-        System.Console.Write($"{array[i]}, "); 
-    }
-    System.Console.Write($"{array[array.Length - 1]}"); 
-}
-
+//Можно ли оставить решение для дробных чисел? Меня как то переклинило, пока читала задание
 /*
 Console.WriteLine("Исходный массив: ");
-    
-    
-    double[] array = new double[5];
-    Random random = new Random();
-    double diff = 0;
-    
-    for(int i = 0; i < 5; i++)
-		{
-			array[i] = random.NextDouble() * 100;
-			Console.Write(Math.Round(array[i]) + ", ");
-		}
 
-Console.WriteLine("Расстояние между точками равно: " + Math.Round(distance, 2));
+double[] array = new double[5];
+Random random = new Random();
+
+for (int i = 0; i < array.Length; i++) {    
+    array[i] = random.NextDouble() * 100;
+    Console.WriteLine(array[i].ToString("F1"));
+}
+Console.ReadKey();
 */
+
+double[] array = new double[5];
+Random random = new Random();
+Console.Write("Исходный массив: ");
+for (int i = 0; i < array.Length; i++ ){
+      array[i] = Math.Round(random.NextDouble() * 100, 2);
+      Console.Write(array[i] + " ");
+}
+
+double maxNumber = array[0];
+double minNumber = array[0];
+
+for (int i = 1; i < array.Length; i++)
+{
+    if (maxNumber < array[i]){
+        maxNumber = array[i];
+    }
+    if (minNumber > array[i]){
+        minNumber = array[i];
+    }
+}
+
+double  diff = maxNumber - minNumber;
+
+Console.WriteLine();
+Console.WriteLine("максимальный элемент: " +  maxNumber);
+Console.WriteLine("Минимальный элемент:  " + minNumber);
+Console.WriteLine("Hазница между максимальным и минимальным элементами: " + Math.Round(diff, 2));

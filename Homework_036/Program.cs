@@ -6,6 +6,7 @@
 */
 
 /*
+//Конкретный массив
 Console.WriteLine("Исходный массив: ");
 
 int sum = 0;
@@ -29,19 +30,32 @@ Console.WriteLine("Сумму элементов, стоящих на нечёт
 Console.ReadKey();
 */
 
-void FillArray(int[] array, int from, int to)
-{
-      for (int i = 0; i < array.Length; i++)
-    {
-        array[i] = new Random().Next(from, to+1); 
-    }
-}
 
-void PrintArray(int[] array)
-{
-       for (int i = 0; i < array.Length - 1; i++)
-    {
-        System.Console.Write($"{array[i]}, "); 
+//число элементов вводит пользователь
+Console.Write($"Введите количество элементов в массиве: ");
+int number = Convert.ToInt32(Console.ReadLine());
+
+
+int RandomNumbers(int number, int min, int max)
+  {
+  int[] array = new int[number];
+  int sum = 0;
+  Console.Write("Наш массив: ");
+
+    for (int i = 0; i < array.Length; i++ ){
+      array[i] = new Random().Next(min, max);
+
+      Console.Write(array[i] + " ");
+
+      if (i % 2 != 0)
+      {
+        sum = sum + array[i];
+      }
     }
-    System.Console.Write($"{array[array.Length - 1]}"); 
-}
+  return sum;
+  }
+
+int array =  RandomNumbers(number, 1, 10);
+
+Console.WriteLine();
+Console.WriteLine("Сумма элементов, стоящих на нечётных позициях:  " + array);

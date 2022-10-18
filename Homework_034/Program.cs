@@ -6,6 +6,8 @@
 */
 
 /*
+//вариант без FillArray , PrintArray
+
 int[] arr = new int[4];
 int even = 0;
 Random rnd = new Random();
@@ -28,19 +30,40 @@ Console.WriteLine();
 Console.WriteLine("Количество четных чисел: {0}", even);
 */
 
-void FillArray(int[] array, int from, int to)
+
+
+int [] arr = new int [4];
+
+void FillArray(int[] array, int min, int max)
 {
       for (int i = 0; i < array.Length; i++)
     {
-        array[i] = new Random().Next(from, to+1); 
+        array[i] = new Random().Next(min, max); 
     }
+}
+void PrintArray(int [] array) {
+    for (int i = 0; i < array.Length; i++) {
+        Console.Write(array[i] + " ");
+    }
+Console.WriteLine();
 }
 
-void PrintArray(int[] array)
-{
-       for (int i = 0; i < array.Length - 1; i++)
-    {
-        System.Console.Write($"{array[i]}, "); 
+int QuantityEven(int[] array) {
+    int quantity = 0;
+    for (int i =0; i<array.Length; i++ ){
+        if (array[i] % 2 == 0) {
+            quantity++;
+        }
     }
-    System.Console.Write($"{array[array.Length - 1]}"); 
+    return quantity;
 }
+
+FillArray(arr, 100, 1000);
+PrintArray(arr);
+Console.WriteLine();
+
+int quantity = QuantityEven(arr);
+Console.WriteLine($"Количество четных чисел в массиве: {quantity} ");
+
+
+

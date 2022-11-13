@@ -3,69 +3,143 @@
 которая упорядочит элементы по убыванию (или возрастанию).
 */
 
+/*
 Console.Write("number of rows: ");
-int m = int.Parse(Console.ReadLine());
+int row = int.Parse(Console.ReadLine());
 Console.Write("number of columns: ");
-int n = int.Parse(Console.ReadLine());
+int column = int.Parse(Console.ReadLine());
 
-int[, ] array = new int[m, n];
+int[, ] array = new int[row, column];
 Random random = new Random();
-Console.WriteLine("two dimensional array: ");
+Console.Write("two dimensional array: ");
 
-void FillArray(int[,]array){
+
+void fillArray(int[,]array){
     for (int i = 0; i < array.GetLength(0); i++){    
         for (int j = 0; j < array.GetLength(1); j++ ){   
-            array[i, j] = new Random().Next(1, 10);
+            array[i, j] = new Random().Next(0, 10);
         }
     }
 }
 
-void PrintArray(int[,] array) {
-    for (int i = 0; i < array.GetLength(0); i++){
-        for (int j = 0; j < array.GetLength(1); j++ ){
-            Console.Write(array[i, j] + " ") ;
-        }
-        Console.WriteLine();
-    }
-}
-
-//сортировка по возрастанию по столбцам
-void SortColumnAscending(int[,] array){
-    for(int j = 0; j < array.GetLength(1); j++){
-        for(int i = 0; i < array.GetLength(0); i++){
-            for(int t = i + 1; t < array.GetLength(0); t++){
-                if(array[i, j] > array[t, j]){
-                    int temp = array[i, j];
-                    array[i, j] = array[t, j];
-                    array[t, j] = temp;
-                }              
-            }
+void twoDarray(int[,] arr, int[] arr2)
+{
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < column; j++)
+        {
+            arr[i, j] = arr2[column * i+j];
         }
     }
 }
 
-//сортировка по убыванию по столбцам
-void SortColumnDescending(int[,] array){
-    for(int j = 0; j < array.GetLength(1); j++){
-        for(int i = 0; i < array.GetLength(0); i++){
-            for(int t = i + 1; t < array.GetLength(0); t++){
-                if(array[i, j] < array[t, j]){
-                    int temp = array[i, j];
-                    array[i, j] = array[t, j];
-                    array[t, j] = temp;
-                }              
-            }
+void arrayOutput(int[,] arr)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            Console.Write(arr[i, j] + "  ");
         }
+
+        Console.WriteLine("  ");
     }
+    Console.WriteLine(" ");
 }
 
+void printArray(int[] arr)
+{
+    for (int i = 0; i < arr.Length; i++)
+    {
+        Console.Write($"{arr[i]}");
+        if (i < (arr.Length-1)) Console.Write($", ");
+        
+    }
+    Console.WriteLine(" ");
+    Console.WriteLine(" ");
+}
+fillArray (array);
 
-FillArray (array);
-PrintArray(array);
 Console.WriteLine();
-SortColumnAscending(array);
-PrintArray(array);
+arrayOutput(array);
+Console.WriteLine("from two dimensinal array to one dimensional: ");
+int[] temp = array.Cast<int>().ToArray();
+printArray(temp);
+Console.WriteLine("Sort ascending:");
+Array.Sort(temp);
+printArray(temp);
+twoDarray(array, temp);
+Console.WriteLine("Sort");
+arrayOutput(array);
+*/
+
+
+Console.Write("number of rows: ");
+int row = int.Parse(Console.ReadLine());
+Console.Write("number of columns: ");
+int column = int.Parse(Console.ReadLine());
+
+int[, ] array = new int[row, column];
+Random random = new Random();
+Console.Write("two dimensional array: ");
+
+
+void fillArray(int[,]array){
+    for (int i = 0; i < array.GetLength(0); i++){    
+        for (int j = 0; j < array.GetLength(1); j++ ){   
+            array[i, j] = new Random().Next(0, 10);
+        }
+    }
+}
+
+void twoDarray(int[,] arr, int[] arr2)
+{
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < column; j++)
+        {
+            arr[i, j] = arr2[column * i+j];
+        }
+    }
+}
+
+void arrayOutput(int[,] arr)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            Console.Write(arr[i, j] + "  ");
+        }
+
+        Console.WriteLine("  ");
+    }
+    Console.WriteLine(" ");
+}
+
+void printArray(int[] arr)
+{
+    for (int i = 0; i < arr.Length; i++)
+    {
+        Console.Write($"{arr[i]}");
+        if (i < (arr.Length-1)) Console.Write($", ");
+        
+    }
+    Console.WriteLine(" ");
+    Console.WriteLine(" ");
+}
+fillArray (array);
+
 Console.WriteLine();
-SortColumnDescending(array);
-PrintArray(array);
-Console.WriteLine();
+arrayOutput(array);
+Console.WriteLine("from two dimensinal array to one dimensional: ");
+int[] temp = array.Cast<int>().ToArray();
+printArray(temp);
+Console.WriteLine("Sort descending:");
+Array.Sort(temp);
+Array.Reverse(temp);
+printArray(temp);
+twoDarray(array, temp);
+Console.WriteLine("Sort");
+arrayOutput(array);
+
